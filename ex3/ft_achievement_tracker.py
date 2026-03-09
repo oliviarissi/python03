@@ -2,6 +2,11 @@
 
 
 def main() -> None:
+    """Run the Achievement Tracker System demo.
+
+    Displays player achievements, computes unique, common, and rare
+    achievements, and compares achievements between players.
+    """
 
     print("=== Achievement Tracker System ===\n")
 

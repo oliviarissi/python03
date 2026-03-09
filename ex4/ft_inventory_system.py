@@ -4,6 +4,16 @@ import sys
 
 
 def main() -> None:
+    """Run the Inventory System Analysis CLI.
+
+    Parses command-line item:quantity pairs, computes totals,
+    displays current inventory, statistics, item categories, and
+    restocking suggestions.
+
+    Raises:
+        ValueError: If a quantity cannot be converted to an integer
+            (caught and reported for each invalid input).
+    """
 
     print("=== Inventory System Analysis ===")
 

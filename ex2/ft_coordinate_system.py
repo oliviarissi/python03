@@ -3,7 +3,14 @@
 import math
 
 
-def calculate_distance(org: tuple, pos: tuple) -> None:
+def calculate_distance(org: tuple[int, int, int],
+                       pos: tuple[int, int, int]) -> None:
+    """Print the Euclidean distance between two 3D coordinates.
+
+    Args:
+        org: Origin coordinate (x, y, z).
+        pos: Target coordinate (x, y, z).
+    """
 
     dist = math.sqrt((pos[0]-org[0])**2 + (pos[1]-org[1])**2 +
                      (pos[2]-org[2])**2)
@@ -11,7 +18,18 @@ def calculate_distance(org: tuple, pos: tuple) -> None:
     print(f"Distance between {org} and {pos}: {dist:.2f}\n")
 
 
-def parse_coordinates(coor_str: str) -> tuple:
+def parse_coordinates(coor_str: str) -> tuple[int, int, int]:
+    """Parse a comma-separated string into a 3D coordinate tuple.
+
+    Args:
+        coor_str: Coordinate string in the format "x,y,z".
+
+    Returns:
+        tuple: Parsed (x, y, z) integers, or None if conversion fails.
+
+    Raises:
+        ValueError: If the input does not contain exactly three values.
+    """
 
     parts = coor_str.split(sep=",")
 
@@ -29,6 +47,11 @@ def parse_coordinates(coor_str: str) -> tuple:
 
 
 def main() -> None:
+    """Run the Game Coordinate System demo.
+
+    Demonstrates coordinate creation, parsing from strings,
+    distance calculation, and tuple unpacking.
+    """
 
     print("=== Game Coordinate System ===\n")
 

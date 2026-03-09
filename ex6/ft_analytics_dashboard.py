@@ -1,52 +1,102 @@
 #!/usr/bin/env python3
 
-from typing import Generator
-
-data = {'players': {'alice': {'level': 41, 'total_score': 2824, 'sessions_played': 13, 'favorite_mode': 'ranked', 'achievements_count': 5}, 'bob': {'level': 16, 'total_score': 4657, 'sessions_played': 27, 'favorite_mode': 'ranked', 'achievements_count': 2}, 'charlie': {'level': 44, 'total_score': 9935, 'sessions_played': 21, 'favorite_mode': 'ranked', 'achievements_count': 7}, 'diana': {'level': 3, 'total_score': 1488, 'sessions_played': 21, 'favorite_mode': 'casual', 'achievements_count': 4}, 'eve': {'level': 33, 'total_score': 1434, 'sessions_played': 81, 'favorite_mode': 'casual', 'achievements_count': 7}, 'frank': {'level': 15, 'total_score': 8359, 'sessions_played': 85, 'favorite_mode': 'competitive', 'achievements_count': 1}}, 'sessions': [{'player': 'bob', 'duration_minutes': 94, 'score': 1831, 'mode': 'competitive', 'completed': False}, {'player': 'bob', 'duration_minutes': 32, 'score': 1478, 'mode': 'casual', 'completed': True}, {'player': 'diana', 'duration_minutes': 17, 'score': 1570, 'mode': 'competitive', 'completed': False}, {'player': 'alice', 'duration_minutes': 98, 'score': 1981, 'mode': 'ranked', 'completed': True}, {'player': 'diana', 'duration_minutes': 15, 'score': 2361, 'mode': 'competitive', 'completed': False}, {'player': 'eve', 'duration_minutes': 29, 'score': 2985, 'mode': 'casual', 'completed': True}, {'player': 'frank', 'duration_minutes': 34, 'score': 1285, 'mode': 'casual', 'completed': True}, {'player': 'alice', 'duration_minutes': 53, 'score': 1238, 'mode': 'competitive', 'completed': False}, {'player': 'bob', 'duration_minutes': 52, 'score': 1555, 'mode': 'casual', 'completed': False}, {'player': 'frank', 'duration_minutes': 92, 'score': 2754, 'mode': 'casual', 'completed': True}, {'player': 'eve', 'duration_minutes': 98, 'score': 1102, 'mode': 'casual', 'completed': False}, {'player': 'diana', 'duration_minutes': 39, 'score': 2721, 'mode': 'ranked', 'completed': True}, {'player': 'frank', 'duration_minutes': 46, 'score': 329, 'mode': 'casual', 'completed': True}, {'player': 'charlie', 'duration_minutes': 56, 'score': 1196, 'mode': 'casual', 'completed': True}, {'player': 'eve', 'duration_minutes': 117, 'score': 
-1388, 'mode': 'casual', 'completed': False}, {'player': 'diana', 'duration_minutes': 118, 'score': 2733, 'mode': 'competitive', 
-'completed': True}, {'player': 'charlie', 'duration_minutes': 22, 'score': 1110, 'mode': 'ranked', 'completed': False}, {'player': 'frank', 'duration_minutes': 79, 'score': 1854, 'mode': 'ranked', 'completed': False}, {'player': 'charlie', 'duration_minutes': 33, 'score': 666, 'mode': 'ranked', 'completed': False}, {'player': 'alice', 'duration_minutes': 101, 'score': 292, 'mode': 
-'casual', 'completed': True}, {'player': 'frank', 'duration_minutes': 25, 'score': 2887, 'mode': 'competitive', 'completed': True}, {'player': 'diana', 'duration_minutes': 53, 'score': 2540, 'mode': 'competitive', 'completed': False}, {'player': 'eve', 'duration_minutes': 115, 'score': 147, 'mode': 'ranked', 'completed': True}, {'player': 'frank', 'duration_minutes': 118, 'score': 
-2299, 'mode': 'competitive', 'completed': False}, {'player': 'alice', 'duration_minutes': 42, 'score': 1880, 'mode': 'casual', 'completed': False}, {'player': 'alice', 'duration_minutes': 97, 'score': 1178, 'mode': 'ranked', 'completed': True}, {'player': 
-'eve', 'duration_minutes': 18, 'score': 2661, 'mode': 'competitive', 'completed': True}, {'player': 'bob', 'duration_minutes': 52, 'score': 761, 'mode': 'ranked', 'completed': True}, {'player': 'eve', 'duration_minutes': 46, 'score': 2101, 'mode': 'casual', 'completed': True}, {'player': 'charlie', 'duration_minutes': 117, 'score': 1359, 'mode': 'casual', 'completed': True}], 'game_modes': ['casual', 'competitive', 'ranked'], 'achievements': ['first_blood', 'level_master', 'speed_runner', 'treasure_seeker', 'boss_hunter', 'pixel_perfect', 'combo_king', 'explorer']}
-
-def stream_gen(data) -> Generator:
-    for key, value in data.items():
-        yield (key, value)
+players = {
+    "alice": {
+        "score": 2300,
+        "active": True,
+        "region": "north",
+        "achievements": ["first_kill", "level_10", "boss_slayer",
+                         "sharp_shooter", "collector"]
+    },
+    "bob": {
+        "score": 1800,
+        "active": True,
+        "region": "east",
+        "achievements": ["first_kill", "level_5", "collector"]
+    },
+    "charlie": {
+        "score": 2150,
+        "active": True,
+        "region": "central",
+        "achievements": ["first_kill", "level_10", "boss_slayer",
+                         "arena_winner", "collector", "explorer", "veteran"]
+    },
+    "diana": {
+        "score": 2050,
+        "active": False,
+        "region": "north",
+        "achievements": ["first_kill", "level_10",
+                         "explorer", "treasure_hunter"]
+    }
+}
 
 
 def main() -> None:
-    
-    stream = stream_gen(data)
-    for key, value in stream:
-        print(key, value)
-        print()
+    """Run the Game Analytics Dashboard.
+
+    Demonstrates list, dict, and set comprehensions to analyze
+    player data: scores, activity status, achievements, regions,
+    and overall statistics.
+
+    Prints:
+        - High scorers, doubled scores, active players
+        - Player scores, score categories, achievement counts
+        - Unique players, achievements, and regions
+        - Combined summary: average score and top performer
+    """
 
     print("=== Game Analytics Dashboard ===\n")
 
-    print("=== List Comprehension Examples ===")
+    if len(players) == 0:
+        print("No players to work with. Add players.\n")
+        return
 
-    print(f"High scorers (>2000): ['alice', 'charlie', 'diana']")
-    print(f"Scores doubled: [4600, 3600, 4300, 4100]")
-    print(f"Active players: ['alice', 'bob', 'charlie']")
+    print("=== List Comprehension Examples ===")
+    high_scores = [k for k, v in players.items() if v['score'] > 2000]
+    scores_doubled = [v['score'] * 2 for v in players.values()]
+    active_names = [k for k, v in players.items() if v['active']]
+    print(f"High scorers (>2000): {high_scores}")
+    print(f"Scores doubled: {scores_doubled}")
+    print(f"Active players: {active_names}")
     print()
 
     print("=== Dict Comprehension Examples ===")
-    print(f"Player scores: {'alice': 2300, 'bob': 1800, 'charlie': 2150}")
-    print(f"Score categories: {'high': 3, 'medium': 2, 'low': 1}")
-    print(f"Achievement counts: {'alice': 5, 'bob': 3, 'charlie': 7}")
+    active = {n: v for n, v in players.items() if v['active']}
+    scores = {n: v['score'] for n, v in active.items()}
+    categories = {
+        'high': len([n for n, v in active.items() if v['score'] >= 2100]),
+        'medium': len(
+            [n for n, v in active.items() if 2000 <= v['score'] < 2100]
+        ),
+        'low': len([n for n, v in active.items() if v['score'] < 2000]),
+    }
+    achievements = {n: len(v['achievements']) for n, v in active.items()}
+    print(f"Player scores: {scores}")
+    print(f"Score categories: {categories}")
+    print(f"Achievement counts: {achievements}")
     print()
 
     print("=== Set Comprehension Examples ===")
-    print(f"Unique players: {'alice', 'bob', 'charlie', 'diana'}")
-    print(f"Unique achievements: {'first_kill', 'level_10', 'boss_slayer'}")
-    print(f"Active regions: {'north', 'east', 'central'}")
+    player_set = {n for n in players}
+    achiev_types = {
+        ach
+        for v in players.values()
+        for ach in v['achievements']
+    }
+    regions = {v['region'] for v in players.values()}
+    print(f"Unique players: {player_set}")
+    print(f"Unique achievements: {achiev_types}")
+    print(f"Active regions: {regions}")
     print()
 
     print("=== Combined Analysis ===")
-    print(f"Total players: 4")
-    print(f"Total unique achievements: 12")
-    print(f"Average score: 2062.5")
-    print(f"Top performer: alice (2300 points, 5 achievements)")
+    score_avg = sum(v['score'] for v in players.values()) / len(players)
+    top = max(players, key=lambda name: players[name]['score'])
+    print(f"Total players: {len(players)}")
+    print(f"Total unique achievements: {len(achiev_types)}")
+    print(f"Average score: {score_avg}")
+    print(f"Top performer: {top} ({players[top]['score']} points, " +
+          f"{len(players[top]['achievements'])} achievements)")
 
 
 if __name__ == "__main__":

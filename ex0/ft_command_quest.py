@@ -4,6 +4,12 @@ import sys
 
 
 def main() -> None:
+    """Run the program.
+
+    Prints the program name, number of command-line arguments, and each
+    provided argument from ``sys.argv``. Displays a message if no arguments
+    are given.
+    """
 
     argc = len(sys.argv)
 
