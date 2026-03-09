@@ -19,6 +19,34 @@ def main() -> None:
     stream = stream_gen(data)
     for key, value in stream:
         print(key, value)
+        print()
+
+    print("=== Game Analytics Dashboard ===\n")
+
+    print("=== List Comprehension Examples ===")
+
+    print(f"High scorers (>2000): ['alice', 'charlie', 'diana']")
+    print(f"Scores doubled: [4600, 3600, 4300, 4100]")
+    print(f"Active players: ['alice', 'bob', 'charlie']")
+    print()
+
+    print("=== Dict Comprehension Examples ===")
+    print(f"Player scores: {'alice': 2300, 'bob': 1800, 'charlie': 2150}")
+    print(f"Score categories: {'high': 3, 'medium': 2, 'low': 1}")
+    print(f"Achievement counts: {'alice': 5, 'bob': 3, 'charlie': 7}")
+    print()
+
+    print("=== Set Comprehension Examples ===")
+    print(f"Unique players: {'alice', 'bob', 'charlie', 'diana'}")
+    print(f"Unique achievements: {'first_kill', 'level_10', 'boss_slayer'}")
+    print(f"Active regions: {'north', 'east', 'central'}")
+    print()
+
+    print("=== Combined Analysis ===")
+    print(f"Total players: 4")
+    print(f"Total unique achievements: 12")
+    print(f"Average score: 2062.5")
+    print(f"Top performer: alice (2300 points, 5 achievements)")
 
 
 if __name__ == "__main__":
